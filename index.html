@@ -20,15 +20,7 @@
     }
     html { scroll-behavior: smooth; }
     body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; font-size: 14px; line-height: 1.5; min-height: 100vh; }
-    #age-gate { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; align-items: center; justify-content: center; }
-    .age-gate-box { max-width: 440px; width: 90%; text-align: center; padding: 48px 32px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
-    .age-gate-box h2 { font-size: 22px; font-weight: 600; margin-bottom: 12px; color: var(--white); }
-    .age-gate-box p { color: var(--text-muted); font-size: 13px; margin-bottom: 32px; line-height: 1.7; }
-    .age-btn-row { display: flex; gap: 12px; justify-content: center; }
-    .age-btn { padding: 12px 32px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 600; cursor: pointer; border: none; transition: opacity .2s; }
-    .age-btn:hover { opacity: .8; }
-    .age-btn-yes { background: var(--white); color: #000; }
-    .age-btn-no { background: var(--surface-hover); color: var(--text-muted); border: 1px solid var(--border); }
+    #age-gate { display: none !important; }
     header { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
     .logo { font-size: 18px; font-weight: 700; color: var(--white); letter-spacing: -.5px; text-decoration: none; flex-shrink: 0; }
     .logo span { color: var(--text-muted); font-weight: 300; }
@@ -70,16 +62,6 @@
   </style>
 </head>
 <body>
-<div id="age-gate">
-  <div class="age-gate-box">
-    <h2>Adult Content</h2>
-    <p>This website contains sexually explicit material intended for adults only. By entering you confirm you are 18 years of age or older and agree to our terms of service.</p>
-    <div class="age-btn-row">
-      <button class="age-btn age-btn-yes" onclick="enterSite()">I am 18+ — Enter</button>
-      <button class="age-btn age-btn-no" onclick="window.location='https://www.google.com'">Exit</button>
-    </div>
-  </div>
-</div>
 <header>
   <a class="logo" href="#">Asian<span>XXX</span></a>
   <div class="search-wrap">
@@ -1003,8 +985,6 @@ function renderGrid() {
 function filterSite(site, btn) { activeSite = site; document.querySelectorAll(".tag-btn").forEach(b => b.classList.remove("active")); btn.classList.add("active"); renderGrid(); }
 function filterTag(tag, btn) { activeTag = tag; document.querySelectorAll(".pill").forEach(b => b.classList.remove("active")); btn.classList.add("active"); renderGrid(); }
 function filterCards() { searchQuery = document.getElementById("search-input").value; renderGrid(); }
-function enterSite() { document.getElementById("age-gate").style.display = "none"; localStorage.setItem("age_verified","1"); }
-if (localStorage.getItem("age_verified")) document.getElementById("age-gate").style.display = "none";
 renderGrid();
 </script>
 </body>
